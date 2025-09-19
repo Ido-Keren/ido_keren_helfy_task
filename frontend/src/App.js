@@ -61,7 +61,6 @@ function App() {
       <TaskList
         tasks={tasks}
         onStartEdit={(task) => {
-          // Open an inline TaskForm prefilled for editing
           setEditingTask(task);
         }}
         onDelete={handleDelete}

@@ -5,29 +5,33 @@
     padding: 1rem;
     margin-bottom: 1rem;
     background-color: #f9f9f9;
-  }
+}
   
-  .button-container {
+.button-container {
     display: flex;
     gap: 0.5rem;
     margin-top: 1rem;
-  }
+}
   
-  .button {
+.button {
     padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 4px;
     border: none;
     background-color: #4caf50;
     color: white;
-  }
+    margin-right: 10px;
+    margin-top: 10px;
+}
   
-  .button-delete {
+.button-delete {
     padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 4px;
     border: none;
     background-color: #f44336;
     color: white;
-  }
-  
+    margin-right: 10px;
+    margin-top: 10px;
+
+}

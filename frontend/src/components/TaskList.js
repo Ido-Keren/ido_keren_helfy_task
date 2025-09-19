@@ -22,7 +22,6 @@ function TaskList({ tasks, secondsPerItem = 2, onStartEdit, onDelete, onToggleCo
     if (!trackRef.current) return;
 
     const measure = () => {
-      // Half of total width because we duplicated items once
       halfWidthRef.current = trackRef.current.scrollWidth / 2;
     };
 
@@ -31,7 +30,6 @@ function TaskList({ tasks, secondsPerItem = 2, onStartEdit, onDelete, onToggleCo
     const resizeObserver = new ResizeObserver(() => {
       const currentOffset = offsetRef.current;
       measure();
-      // Keep offset within new bounds
       if (halfWidthRef.current > 0) {
         offsetRef.current = ((currentOffset % halfWidthRef.current) + halfWidthRef.current) % halfWidthRef.current * -1;
         trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
@@ -49,7 +47,7 @@ function TaskList({ tasks, secondsPerItem = 2, onStartEdit, onDelete, onToggleCo
     cancelAnimationFrame(animationRef.current || 0);
     lastTsRef.current = 0;
     offsetRef.current = 0;
-    const speedPxPerSec = secondsPerItem > 0 ? 300 / secondsPerItem : 60; // 300px per item default width
+    const speedPxPerSec = secondsPerItem > 0 ? 300 / secondsPerItem : 60;
 
     const step = (ts) => {
       if (!lastTsRef.current) lastTsRef.current = ts;
@@ -58,7 +56,6 @@ function TaskList({ tasks, secondsPerItem = 2, onStartEdit, onDelete, onToggleCo
 
       if (!pausedRef.current && trackRef.current && halfWidthRef.current > 0) {
         offsetRef.current -= speedPxPerSec * dt;
-        // Reset when we scrolled one full set
         if (-offsetRef.current >= halfWidthRef.current) {
           offsetRef.current += halfWidthRef.current;
         }
